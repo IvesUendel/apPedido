@@ -27,11 +27,8 @@ public class UserLoader implements ApplicationRunner{
 		while(rowReader != null){		
 			fields = rowReader.split(";");	
 			
-			User user = new User();
-			user.setName(fields[0]);
-			user.setAddress(fields[1]);
-			user.setEmail(fields[2]);
-			
+			User user = new User(fields[0], fields[1], fields[2]);
+						
 			maps.put(user.getEmail(), user);
 			
 			rowReader = readBufferedReader.readLine();

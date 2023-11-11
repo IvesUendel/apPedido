@@ -8,6 +8,15 @@ public class Order {
 	private String description;
 	private int order_code;
 	
+	public Order() {}
+			
+	public Order(LocalDate order_date, String description, int order_code) {
+		super();
+		this.order_date = order_date;
+		this.description = description;
+		this.order_code = order_code;
+	}
+
 	public LocalDate getOrder_date() {
 		return order_date;
 	}

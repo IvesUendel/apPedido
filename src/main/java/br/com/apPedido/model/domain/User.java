@@ -1,14 +1,12 @@
 package br.com.apPedido.model.domain;
 
-public abstract class User {
+public class User {
 
 	private String name;
 	private String address;
 	private String email;
 	
-	protected User() {
-		
-	}
+	public User() {}
 	
 	public User(String name, String address, String email) {
 		this.name = name;
@@ -32,6 +30,11 @@ public abstract class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "name: " + name + ", address: " + address + ", email: " + email ;
 	}
 	
 }

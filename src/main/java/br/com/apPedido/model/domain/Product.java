@@ -1,6 +1,6 @@
 package br.com.apPedido.model.domain;
 
-public abstract class Product {
+public class Product {
 
 	private double value;
 	private int product_code;
@@ -9,6 +9,8 @@ public abstract class Product {
 	private double weight;
 	private int quantity;
 	private String ingredients;
+	
+	public Product() {}
 	
 	public Product(double value, int product_code, String description, String type, double weight, int quantity,
 			String ingredients) {

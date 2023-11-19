@@ -1,4 +1,4 @@
-/*package br.com.apPedido;
+package br.com.apPedido;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,17 +11,17 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.com.apPedido.model.domain.PhysicalCustomer;
-import br.com.apPedido.model.domain.User;
 
 @Order(1)
 @Component
-public class UserLoader implements ApplicationRunner{
+public class PhysicalCustomerLoader implements ApplicationRunner{
 
-	private Map<String, User> maps = new HashMap<String, User>();
+	private Map<Integer, PhysicalCustomer>maps = new HashMap<Integer, PhysicalCustomer>();
+	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-				
-		FileReader fileReader = new FileReader("files/users.txt");
+		
+		FileReader fileReader = new FileReader("files/physicalCustomers.txt");
 		BufferedReader readBufferedReader = new BufferedReader(fileReader);
 		
 		String rowReader = readBufferedReader.readLine();
@@ -30,20 +30,19 @@ public class UserLoader implements ApplicationRunner{
 		while(rowReader != null){		
 			fields = rowReader.split(";");	
 			
-			User user = new User(fields[0], fields[1], fields[2]);
+			PhysicalCustomer physicalCustomer = new PhysicalCustomer(fields[0], fields[1], fields[2], Integer.valueOf(fields[3]));
 						
-			maps.put(user.getEmail(), user);
+			maps.put(physicalCustomer.getCpf(), physicalCustomer);
 			
 			rowReader = readBufferedReader.readLine();
 		}
 		
-		for(User user : maps.values()) {
-			System.out.println("User : " + user);
+		for(PhysicalCustomer physicalCustomer : maps.values()) {
+			System.out.println("Physical Customer : " + physicalCustomer);
 		}
 		
 		readBufferedReader.close();
+		
 	}
 
-	
-	
-}*/
+}

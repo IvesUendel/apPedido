@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.apPedido.model.domain.CerealBar;
 
-@Order(2)
+@Order(4)
 @Component
 public class CerealBarLoader implements ApplicationRunner{
 

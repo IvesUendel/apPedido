@@ -1,4 +1,4 @@
-/*package br.com.apPedido;
+package br.com.apPedido;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,18 +10,19 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.com.apPedido.model.domain.PhysicalCustomer;
-import br.com.apPedido.model.domain.User;
+import br.com.apPedido.model.domain.LegalCustomer;
 
-@Order(1)
+
+@Order(2)
 @Component
-public class UserLoader implements ApplicationRunner{
+public class LegalCustomerLoader implements ApplicationRunner{
 
-	private Map<String, User> maps = new HashMap<String, User>();
+private Map<Integer, LegalCustomer>maps = new HashMap<Integer, LegalCustomer>();
+	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-				
-		FileReader fileReader = new FileReader("files/users.txt");
+		
+		FileReader fileReader = new FileReader("files/legalCustomers.txt");
 		BufferedReader readBufferedReader = new BufferedReader(fileReader);
 		
 		String rowReader = readBufferedReader.readLine();
@@ -30,20 +31,19 @@ public class UserLoader implements ApplicationRunner{
 		while(rowReader != null){		
 			fields = rowReader.split(";");	
 			
-			User user = new User(fields[0], fields[1], fields[2]);
+			LegalCustomer legalCustomer = new LegalCustomer(fields[0], fields[1], fields[2], Integer.valueOf(fields[3]));
 						
-			maps.put(user.getEmail(), user);
+			maps.put(legalCustomer.getCnpj(), legalCustomer);
 			
 			rowReader = readBufferedReader.readLine();
 		}
 		
-		for(User user : maps.values()) {
-			System.out.println("User : " + user);
+		for(LegalCustomer legalCustomer : maps.values()) {
+			System.out.println("Legal Customer : " + legalCustomer);
 		}
 		
 		readBufferedReader.close();
+		
 	}
 
-	
-	
-}*/
+}

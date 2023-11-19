@@ -35,7 +35,7 @@ public abstract class User {
 
 	@Override
 	public String toString() {
-		return String.format("Name: (%s) - Address: (%s) - E-mail: (%s)", getName(), getAddress(), getEmail());
+		return String.format("Name: (%s) - Address: (%s) - E-mail: (%s)", name, address, email);
 	}
 	
 }

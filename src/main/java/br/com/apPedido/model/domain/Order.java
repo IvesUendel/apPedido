@@ -62,7 +62,7 @@ public class Order {
 	
 	@Override
 	public String toString() {
-		return String.format("Descripction: (%s) - Order Date: (%s) - Order Code: (%d) - User: (%s) - Products: (???)", 
+		return String.format("Descripction: (%s) - Order Date: (%s) - Order Code: (%d) - User: (%s) - Products: (%s)", 
 				description, order_date, order_code, user, products);
 	}
 	

@@ -1,6 +1,6 @@
 package br.com.apPedido.model.domain;
 
-public class Product {
+public abstract class Product {
 
 	private double value;
 	private int product_code;
@@ -9,10 +9,9 @@ public class Product {
 	private double weight;
 	private int quantity;
 	private String ingredients;
+	private String name;
 	
-	public Product() {}
-	
-	public Product(double value, int product_code, String description, String type, double weight, int quantity,
+	/*public Product(double value, int product_code, String description, String type, double weight, int quantity,
 			String ingredients) {
 	
 		this.value = value;
@@ -22,49 +21,76 @@ public class Product {
 		this.weight = weight;
 		this.quantity = quantity;
 		this.ingredients = ingredients;
+	}*/
+	
+	@Override
+	public String toString() {
+		return String.format("Name: (%s) - Value: (%.2f) - Product Code: (%d) - Description: (%s) - Type: (%s) - Weight: (%.2f) - "
+				+ "Quantity: (%d) - Ingredients: (%s)", name, value, product_code, description, type, weight, quantity, ingredients);
 	}
 	
 	public double getValue() {
 		return value;
 	}
+	
 	public void setValue(double value) {
 		this.value = value;
 	}
+	
 	public int getProduct_code() {
 		return product_code;
 	}
+	
 	public void setProduct_code(int product_code) {
 		this.product_code = product_code;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	public String getType() {
 		return type;
 	}
+	
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 	public double getWeight() {
 		return weight;
 	}
+	
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
+	
 	public int getQuantity() {
 		return quantity;
 	}
+	
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
 	public String getIngredients() {
 		return ingredients;
 	}
+	
 	public void setIngredients(String ingredients) {
 		this.ingredients = ingredients;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 			
 }

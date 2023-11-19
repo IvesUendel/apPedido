@@ -9,6 +9,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.com.apPedido.model.domain.LegalCustomer;
 import br.com.apPedido.model.domain.User;
 
 @Component
@@ -27,7 +28,7 @@ public class UserLoader implements ApplicationRunner{
 		while(rowReader != null){		
 			fields = rowReader.split(";");	
 			
-			User user = new User(fields[0], fields[1], fields[2]);
+			User user = new LegalCustomer(fields[0], fields[1], fields[2]);
 						
 			maps.put(user.getEmail(), user);
 			

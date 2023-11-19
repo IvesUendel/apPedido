@@ -60,4 +60,10 @@ public class Order {
 		this.products = products;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("Descripction: (%s) - Order Date: (%s) - Order Code: (%d) - User: (%s) - Products: (???)", 
+				description, order_date, order_code, user, products);
+	}
+	
 }

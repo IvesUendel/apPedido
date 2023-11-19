@@ -10,18 +10,18 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.com.apPedido.model.domain.PhysicalCustomer;
-import br.com.apPedido.model.domain.User;
+import br.com.apPedido.model.domain.CerealBar;
 
-@Order(1)
+@Order(2)
 @Component
-public class UserLoader implements ApplicationRunner{
+public class CerealBarLoader implements ApplicationRunner{
 
-	private Map<String, User> maps = new HashMap<String, User>();
+	private Map<Integer, CerealBar>maps = new HashMap<Integer, CerealBar>();
+	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-				
-		FileReader fileReader = new FileReader("files/users.txt");
+		
+		FileReader fileReader = new FileReader("files/cerealbars.txt");
 		BufferedReader readBufferedReader = new BufferedReader(fileReader);
 		
 		String rowReader = readBufferedReader.readLine();
@@ -30,20 +30,20 @@ public class UserLoader implements ApplicationRunner{
 		while(rowReader != null){		
 			fields = rowReader.split(";");	
 			
-			User user = new PhysicalCustomer(fields[0], fields[1], fields[2]);
+			CerealBar cerealBar = new CerealBar(fields[0], Double.valueOf(fields[1]), Integer.valueOf(fields[2]),
+												fields[3], fields[4], Double.valueOf(fields[5]), Integer.valueOf(fields[6]) , fields[7]);
 						
-			maps.put(user.getEmail(), user);
+			maps.put(cerealBar.getProduct_code(), cerealBar);
 			
 			rowReader = readBufferedReader.readLine();
 		}
 		
-		for(User user : maps.values()) {
-			System.out.println("User : " + user);
+		for(CerealBar cerealBar : maps.values()) {
+			System.out.println("Cereal Bar : " + cerealBar);
 		}
 		
 		readBufferedReader.close();
+		
 	}
 
-	
-	
 }

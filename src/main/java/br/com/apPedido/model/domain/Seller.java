@@ -6,12 +6,12 @@ public class Seller extends User{
 	private double salary;
 	private double comission;
 	
-	/*public Seller(String name, String address, String email, int employee_code, double salary, double comission) {
+	public Seller(String name, String address, String email, int employee_code, double salary, double comission) {
 		super(name, address, email);
 		this.employee_code = employee_code;
 		this.salary = salary;
 		this.comission = comission;
-	}*/
+	}
 	
 	public int getEmployee_code() {
 		return employee_code;

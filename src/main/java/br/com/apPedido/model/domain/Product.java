@@ -11,9 +11,9 @@ public abstract class Product {
 	private String ingredients;
 	private String name;
 	
-	/*public Product(double value, int product_code, String description, String type, double weight, int quantity,
+	public Product(String name, double value, int product_code, String description, String type, double weight, int quantity,
 			String ingredients) {
-	
+		this.name = name;
 		this.value = value;
 		this.product_code = product_code;
 		this.description = description;
@@ -21,8 +21,8 @@ public abstract class Product {
 		this.weight = weight;
 		this.quantity = quantity;
 		this.ingredients = ingredients;
-	}*/
-	
+	}
+
 	@Override
 	public String toString() {
 		return String.format("Name: (%s) - Value: (%.2f) - Product Code: (%d) - Description: (%s) - Type: (%s) - Weight: (%.2f) - "

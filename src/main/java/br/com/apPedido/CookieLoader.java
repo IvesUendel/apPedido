@@ -2,21 +2,22 @@ package br.com.apPedido;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.com.apPedido.model.domain.Cookie;
+import br.com.apPedido.model.service.CookieService;
 
 @Order(5)
 @Component
 public class CookieLoader implements ApplicationRunner {
-
-	private Map<Integer, Cookie>maps = new HashMap<Integer, Cookie>();
+	
+	@Autowired
+	private CookieService cookieService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -33,12 +34,12 @@ public class CookieLoader implements ApplicationRunner {
 			Cookie cookie = new Cookie(fields[0], Double.valueOf(fields[1]), Integer.valueOf(fields[2]),
 												fields[3], fields[4], Double.valueOf(fields[5]), Integer.valueOf(fields[6]) , fields[7]);
 						
-			maps.put(cookie.getProduct_code(), cookie);
+			cookieService.includeData(cookie);
 			
 			rowReader = readBufferedReader.readLine();
 		}
 		
-		for(Cookie cookie : maps.values()) {
+		for(Cookie cookie : cookieService.getList()) {
 			System.out.println("Cookie : " + cookie);
 		}
 		

@@ -2,21 +2,22 @@ package br.com.apPedido;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.com.apPedido.model.domain.Seller;
+import br.com.apPedido.model.service.SellerService;
 
 @Order(3)
 @Component
 public class SellerLoader implements ApplicationRunner {
 
-private Map<Integer, Seller>maps = new HashMap<Integer, Seller>();
+	@Autowired
+	private SellerService sellerService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -32,12 +33,12 @@ private Map<Integer, Seller>maps = new HashMap<Integer, Seller>();
 			
 			Seller seller = new Seller(fields[0], fields[1], fields[2], Integer.valueOf(fields[3]), Double.valueOf(fields[4]), Double.valueOf(fields[5]));
 						
-			maps.put(seller.getEmployee_code(), seller);
+			sellerService.includeData(seller);
 			
 			rowReader = readBufferedReader.readLine();
 		}
 		
-		for(Seller seller : maps.values()) {
+		for(Seller seller : sellerService.getList()) {
 			System.out.println("Seller : " + seller);
 		}
 		

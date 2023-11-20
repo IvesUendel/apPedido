@@ -2,22 +2,23 @@ package br.com.apPedido;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.com.apPedido.model.domain.LegalCustomer;
+import br.com.apPedido.model.service.LegalCustomerService;
 
 
 @Order(2)
 @Component
 public class LegalCustomerLoader implements ApplicationRunner{
 
-private Map<Integer, LegalCustomer>maps = new HashMap<Integer, LegalCustomer>();
+	@Autowired
+	private LegalCustomerService legalService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -33,12 +34,12 @@ private Map<Integer, LegalCustomer>maps = new HashMap<Integer, LegalCustomer>();
 			
 			LegalCustomer legalCustomer = new LegalCustomer(fields[0], fields[1], fields[2], Integer.valueOf(fields[3]));
 						
-			maps.put(legalCustomer.getCnpj(), legalCustomer);
+			legalService.includeData(legalCustomer);
 			
 			rowReader = readBufferedReader.readLine();
 		}
 		
-		for(LegalCustomer legalCustomer : maps.values()) {
+		for(LegalCustomer legalCustomer : legalService.getList()) {
 			System.out.println("Legal Customer : " + legalCustomer);
 		}
 		

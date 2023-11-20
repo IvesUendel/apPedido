@@ -6,6 +6,8 @@ public class Seller extends User{
 	private double salary;
 	private double comission;
 	
+	public Seller() {}
+	
 	public Seller(String name, String address, String email, int employee_code, double salary, double comission) {
 		super(name, address, email);
 		this.employee_code = employee_code;

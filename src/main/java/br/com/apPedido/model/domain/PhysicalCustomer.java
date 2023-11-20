@@ -4,6 +4,8 @@ public class PhysicalCustomer extends User{
 
 	private int cpf;
 	
+	public PhysicalCustomer() {}
+	
 	public PhysicalCustomer(String name, String address, String email, int cpf) {
 		super(name, address, email);
 		this.cpf = cpf;

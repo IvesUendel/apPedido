@@ -3,7 +3,7 @@ package br.com.apPedido.model.domain;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Order {
+public class OrderApp {
 
 	private LocalDate order_date;
 	private String description;
@@ -11,9 +11,9 @@ public class Order {
 	private User user;
 	private List<Product> products;
 	
-	public Order() {}
+	public OrderApp() {}
 			
-	public Order(LocalDate order_date, String description, int order_code) {
+	public OrderApp(LocalDate order_date, String description, int order_code) {
 		super();
 		this.order_date = order_date;
 		this.description = description;
@@ -62,8 +62,8 @@ public class Order {
 	
 	@Override
 	public String toString() {
-		return String.format("Descripction: (%s) - Order Date: (%s) - Order Code: (%d) - User: (%s) - Products: (%s)", 
-				description, order_date, order_code, user, products);
+		return String.format("Descripction: (%s) - Order Date: (%s) - Order Code: (%d) - User: (%s) - Products: (%d)", 
+				description, order_date, order_code, user, products.size());
 	}
 	
 }

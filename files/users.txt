@@ -1,4 +1,4 @@
-João Silva;São Paulo;joao123@emailficticio.com;
+Joao Silva;Sao Paulo;joao123@emailficticio.com;
 Maria Santos;Rio de Janeiro;maria456@emailficticio.com;
 Pedro Oliveira;Brasília;pedro@emailficticio.com;
 Ana Pereira;Salvador;ana@emailficticio.com;

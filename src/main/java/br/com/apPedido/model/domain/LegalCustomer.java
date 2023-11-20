@@ -4,6 +4,8 @@ public class LegalCustomer extends User{
 
 	private int cnpj;
 	
+	public LegalCustomer() {}
+	
 	public LegalCustomer(String name, String address, String email) {
 		super(name, address, email);
 	}

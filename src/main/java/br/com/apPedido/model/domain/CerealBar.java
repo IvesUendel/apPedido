@@ -2,6 +2,8 @@ package br.com.apPedido.model.domain;
 
 public class CerealBar extends Product{
 	
+	public CerealBar() {}
+	
 	public CerealBar( String name, double value, int product_code, String description, String type, double weight, int quantity,
 			String ingredients) {
 		super(name, value, product_code, description, type, weight, quantity, ingredients);

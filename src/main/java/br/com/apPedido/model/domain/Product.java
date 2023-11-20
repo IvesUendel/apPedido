@@ -11,6 +11,8 @@ public abstract class Product {
 	private String ingredients;
 	private String name;
 	
+	public Product() {}
+	
 	public Product(String name, double value, int product_code, String description, String type, double weight, int quantity,
 			String ingredients) {
 		this.name = name;

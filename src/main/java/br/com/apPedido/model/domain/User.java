@@ -6,7 +6,7 @@ public abstract class User {
 	private String address;
 	private String email;
 	
-	//public User() {}
+	public User() {}
 	
 	public User(String name, String address, String email) {
 		this.name = name;

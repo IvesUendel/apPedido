@@ -1,7 +1,19 @@
 package br.com.apPedido.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@jakarta.persistence.Entity
 public abstract class User {
 
+	@Id
+	@jakarta.persistence.Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+	private Integer id;
 	private String name;
 	private String address;
 	private String email;
@@ -14,6 +26,14 @@ public abstract class User {
 		this.email = email;
 	}
 	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}

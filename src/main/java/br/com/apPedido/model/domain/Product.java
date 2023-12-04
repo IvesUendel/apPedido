@@ -1,7 +1,19 @@
 package br.com.apPedido.model.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Product {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private double value;
 	private int product_code;
 	private String description;
@@ -30,7 +42,15 @@ public abstract class Product {
 		return String.format("Name: (%s) - Value: (%.2f) - Product Code: (%d) - Description: (%s) - Type: (%s) - Weight: (%.2f) - "
 				+ "Quantity: (%d) - Ingredients: (%s)", name, value, product_code, description, type, weight, quantity, ingredients);
 	}
-	
+		
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public double getValue() {
 		return value;
 	}

@@ -1,5 +1,8 @@
 package br.com.apPedido.model.domain;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Seller extends User{
 
 	private int employee_code;
@@ -14,7 +17,7 @@ public class Seller extends User{
 		this.salary = salary;
 		this.comission = comission;
 	}
-	
+
 	public int getEmployee_code() {
 		return employee_code;
 	}

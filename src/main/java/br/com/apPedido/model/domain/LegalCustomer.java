@@ -1,5 +1,8 @@
 package br.com.apPedido.model.domain;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class LegalCustomer extends User{
 
 	private int cnpj;

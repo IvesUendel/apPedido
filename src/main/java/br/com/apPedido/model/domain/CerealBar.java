@@ -1,5 +1,8 @@
 package br.com.apPedido.model.domain;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class CerealBar extends Product{
 	
 	public CerealBar() {}

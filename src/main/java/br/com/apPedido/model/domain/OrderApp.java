@@ -3,12 +3,24 @@ package br.com.apPedido.model.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+
+@Entity
 public class OrderApp {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private LocalDate order_date;
 	private String description;
 	private int order_code;
+	@Transient
 	private User user;
+	@Transient
 	private List<Product> products;
 	
 	public OrderApp() {}
@@ -18,6 +30,14 @@ public class OrderApp {
 		this.order_date = order_date;
 		this.description = description;
 		this.order_code = order_code;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public LocalDate getOrder_date() {
@@ -62,8 +82,8 @@ public class OrderApp {
 	
 	@Override
 	public String toString() {
-		return String.format("Descripction: (%s) - Order Date: (%s) - Order Code: (%d) - User: (%s) - Products: (%d)", 
-				description, order_date, order_code, user, products.size());
+		return String.format("ID: (%d) - Descripction: (%s) - Order Date: (%s) - Order Code: (%d) - User: (%s) - Products: (%s)", 
+				id, description, order_date, order_code, user, products);
 	}
 	
 }

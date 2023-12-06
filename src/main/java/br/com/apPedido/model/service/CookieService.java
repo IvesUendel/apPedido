@@ -1,22 +1,24 @@
 package br.com.apPedido.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.apPedido.model.domain.Cookie;
+import br.com.apPedido.model.repositories.CookieRepository;
 
 @Service
 public class CookieService {
-	private Map<Integer, Cookie>maps = new HashMap<Integer, Cookie>();
+	
+	@Autowired
+	private CookieRepository cookieRepository;
 	
 	public void includeData(Cookie cookie){
-		maps.put(cookie.getProduct_code(), cookie);
+		cookieRepository.save(cookie);
 	}
 	
 	public Collection<Cookie> getList(){
-		return maps.values();
-	}
+		return (Collection<Cookie>) cookieRepository.findAll();
+    }
 }

@@ -1,22 +1,24 @@
 package br.com.apPedido.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.apPedido.model.domain.LegalCustomer;
+import br.com.apPedido.model.repositories.LegalCustomerRepository;
 
 @Service
 public class LegalCustomerService {
-	private Map<Integer, LegalCustomer> maps = new HashMap<Integer, LegalCustomer>();
+	
+	@Autowired
+	private LegalCustomerRepository legalCustomerRepository;
 	
 	public void includeData(LegalCustomer legalCustomer){
-		maps.put(legalCustomer.getCnpj(), legalCustomer);
+		legalCustomerRepository.save(legalCustomer);
 	}
 	
 	public Collection<LegalCustomer> getList(){
-		return maps.values();
+		return (Collection<LegalCustomer>) legalCustomerRepository.findAll();
 	}
 }

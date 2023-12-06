@@ -1,0 +1,14 @@
+OD;first order of the day;1001;1;
+CB;1;
+CB;2;
+CB;3;
+CK;4;
+CK;5;
+CK;6;
+OD;second order of the day;1001;2;
+CB;1;
+CK;4;
+CB;2;
+CK;6;
+CB;3;
+CK;5;

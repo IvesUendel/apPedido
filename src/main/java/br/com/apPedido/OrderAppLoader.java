@@ -14,11 +14,12 @@ import org.springframework.stereotype.Component;
 import br.com.apPedido.model.domain.CerealBar;
 import br.com.apPedido.model.domain.Cookie;
 import br.com.apPedido.model.domain.OrderApp;
-import br.com.apPedido.model.domain.PhysicalCustomer;
 import br.com.apPedido.model.domain.Product;
+import br.com.apPedido.model.domain.Seller;
+import br.com.apPedido.model.domain.User;
 import br.com.apPedido.model.service.OrderAppService;
 
-@Order(6)
+@Order(9)
 @Component
 public class OrderAppLoader implements ApplicationRunner{
 	
@@ -41,26 +42,29 @@ public class OrderAppLoader implements ApplicationRunner{
 			
 			switch (fields[0]) {
 			case "OD": 
+				
+				User user = new Seller();
+				user.setId(Integer.valueOf(fields[3]));	
+				
 				orderApp = new OrderApp();
 				orderApp.setOrder_date(LocalDate.now());
 				orderApp.setDescription(fields[1]);
 				orderApp.setOrder_code(Integer.valueOf(fields[2]));
-				orderApp.setUser(new PhysicalCustomer(fields[3], fields[4], fields[5],Integer.valueOf(fields[6])));
+				//orderApp.setUser(new PhysicalCustomer(fields[3], fields[4], fields[5],Integer.valueOf(fields[6])));
+				orderApp.setUser(user);
 				orderApp.setProducts(new ArrayList<Product>());	
-				
-				orderAppService.includeData(orderApp);
 				break;
 				
 			case "CB": 
-				CerealBar cerealBar = new CerealBar(fields[1], Double.valueOf(fields[2]), Integer.valueOf(fields[3]),
-						fields[4], fields[5], Double.valueOf(fields[6]), Integer.valueOf(fields[7]) , fields[8]);
+				CerealBar cerealBar = new CerealBar();
+				cerealBar.setId(Integer.valueOf(fields[1]));
 				
 				orderApp.getProducts().add(cerealBar);
 				break;
 				
 			case "CK": 
-				Cookie cookie = new Cookie(fields[1], Double.valueOf(fields[2]), Integer.valueOf(fields[3]),
-						fields[4], fields[5], Double.valueOf(fields[6]), Integer.valueOf(fields[7]) , fields[8]);
+				Cookie cookie = new Cookie();
+				cookie.setId(Integer.valueOf(fields[1]));
 				
 				orderApp.getProducts().add(cookie);
 				break;
@@ -69,6 +73,8 @@ public class OrderAppLoader implements ApplicationRunner{
 			
 			rowReader = readBufferedReader.readLine();
 		}
+		
+		orderAppService.includeData(orderApp);
 		
 		for (OrderApp odApp : orderAppService.getList()) {
 			System.out.println("Order: " + odApp);

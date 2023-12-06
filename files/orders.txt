@@ -1,7 +1,7 @@
-OD;first order of the day;1001;Joao Silva;Sao Paulo;joao123@emailficticio.com;1111;
-CB;PresidentChoise;2.50;20000;"Delicious cereal bar: Natural energy, intense chestnut flavor!";Nut bar;35;5;Nut - Cereal - Sugar - Maltodextrin - Honey - Coconut - Syrup - Canola Oil;
-CB;CrunchyDelight;2.75;20001;"Irresistible granola bar: Bursting with energy, rich almond taste!";Granola bar;40;6;Nut - Oats - Brown Sugar - Corn Syrup - Almond Extract - Coconut Oil;
-CB;EnergyBoost;3.00;20002;"Revitalizing energy bar: A mix of nuts and honey for a natural lift!";Energy bar;45;7;Nut - Honey - Almond - Walnut - Cashew - Sunflower Seeds - Soy Protein.
-CK;NatureFuel;2.80;20003;"Wholesome cereal bar: Packed with fiber, oats, and a touch of honey!";Cereal bar;35;5;Oats - Honey - Brown Sugar - Wheat Bran - Raisins - Almond - Flaxseed.
-CK;BlissBites;2.50;20004;"Indulgent chocolate bar: A decadent blend of cocoa, almonds, and oats!";Chocolate bar;50;8;Cocoa - Almond - Oats - Sugar - Coconut Oil - Vanilla Extract.
-CK;ZenZest;3.20;20005;"Relaxing lavender bar: Lavender-infused cereal treat for a calm snack!";Lavender bar;30;4;Oats - Brown Sugar - Honey - Almond - Lavender Extract - Canola Oil.
+OD;first order of the day;1001;1;
+CB;1;
+CB;2;
+CB;3;
+CK;4;
+CK;5;
+CK;6;

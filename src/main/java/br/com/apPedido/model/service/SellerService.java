@@ -1,24 +1,25 @@
 package br.com.apPedido.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.apPedido.model.domain.Seller;
+import br.com.apPedido.model.repositories.SellerRepository;
 
 @Service
 public class SellerService {
 	
-private Map<Integer, Seller> maps = new HashMap<Integer, Seller>();
+	@Autowired
+	private SellerRepository sellerRepository;
 	
 	public void includeData(Seller seller){
-		maps.put(seller.getEmployee_code(), seller);
+		sellerRepository.save(seller);
 	}
 	
 	public Collection<Seller> getList()
 	{
-		return maps.values();
+		return (Collection<Seller>) sellerRepository.findAll();
 	}
 }

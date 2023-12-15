@@ -21,4 +21,8 @@ public class LegalCustomerService {
 	public Collection<LegalCustomer> getList(){
 		return (Collection<LegalCustomer>) legalCustomerRepository.findAll();
 	}
+	
+	public void deleteData(Integer id) {
+		legalCustomerRepository.deleteById(id);	
+	}
 }

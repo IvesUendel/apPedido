@@ -2,6 +2,7 @@ package br.com.apPedido.model.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -38,6 +39,7 @@ public abstract class Product {
 	private String name;
 	
 	@ManyToMany(mappedBy = "products")
+	@JsonBackReference
 	private List<OrderApp> ordersApp;
 	
 	public Product() {}

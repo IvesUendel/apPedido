@@ -2,6 +2,9 @@ package br.com.apPedido.model.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +15,14 @@ import jakarta.persistence.ManyToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(
+		use = JsonTypeInfo.Id.NAME,
+		include = JsonTypeInfo.As.PROPERTY,
+		property = "type")
+@JsonSubTypes({
+	@JsonSubTypes.Type(value = CerealBar.class, name = "CerealBar"),
+	@JsonSubTypes.Type(value = Cookie.class, name = "Cookie")
+})
 public abstract class Product {
 
 	@Id

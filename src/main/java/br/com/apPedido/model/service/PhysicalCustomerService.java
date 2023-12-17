@@ -22,4 +22,8 @@ public class PhysicalCustomerService {
 	{
 		return (Collection<PhysicalCustomer>) physicalCustomerRepository.findAll();
 	}
+	
+	public void deleteData(Integer id) {
+		physicalCustomerRepository.deleteById(id);
+	}
 }

@@ -22,4 +22,8 @@ public class SellerService {
 	{
 		return (Collection<Seller>) sellerRepository.findAll();
 	}
+	
+	public void deleteData(Integer id) {
+		sellerRepository.deleteById(id);
+	}
 }

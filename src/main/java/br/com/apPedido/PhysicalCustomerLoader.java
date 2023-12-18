@@ -9,7 +9,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.com.apPedido.model.domain.Address;
 import br.com.apPedido.model.domain.PhysicalCustomer;
+import br.com.apPedido.model.service.AddressService;
 import br.com.apPedido.model.service.PhysicalCustomerService;
 
 @Order(1)
@@ -18,6 +20,8 @@ public class PhysicalCustomerLoader implements ApplicationRunner{
 	
 	@Autowired
 	private PhysicalCustomerService physicalService;
+	@Autowired
+	private AddressService brazilAddressService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -31,7 +35,10 @@ public class PhysicalCustomerLoader implements ApplicationRunner{
 		while(rowReader != null){		
 			fields = rowReader.split(";");	
 			
-			PhysicalCustomer physicalCustomer = new PhysicalCustomer(fields[0], fields[1], fields[2], Integer.valueOf(fields[3]));
+			String cep = fields[4];
+			Address brazilAddress = brazilAddressService.searchCep(cep);
+			
+			PhysicalCustomer physicalCustomer = new PhysicalCustomer(fields[0], fields[1], fields[2], Integer.valueOf(fields[3]), brazilAddress);
 			
 			physicalService.includeData(physicalCustomer);
 			

@@ -1,6 +1,9 @@
 package br.com.apPedido.model.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Seller extends User{
@@ -8,6 +11,9 @@ public class Seller extends User{
 	private int employee_code;
 	private double salary;
 	private double comission;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idAddress")
+	private Address brazilAddress;
 	
 	public Seller() {}
 	
@@ -16,6 +22,14 @@ public class Seller extends User{
 		this.employee_code = employee_code;
 		this.salary = salary;
 		this.comission = comission;
+	}
+	
+	public Seller(String name, String address, String email, int employee_code, double salary, double comission, Address brazilAddress) {
+		super(name, address, email);
+		this.employee_code = employee_code;
+		this.salary = salary;
+		this.comission = comission;
+		this.brazilAddress = brazilAddress;
 	}
 
 	public int getEmployee_code() {
@@ -76,6 +90,18 @@ public class Seller extends User{
 	public void setEmail(String email) {
 		// TODO Auto-generated method stub
 		super.setEmail(email);
+	}
+	
+	@Override
+	public Address getBrazilAddress() {
+		// TODO Auto-generated method stub
+		return super.getBrazilAddress();
+	}
+
+	@Override
+	public void setBrazilAddress(Address brazilAddress) {
+		// TODO Auto-generated method stub
+		super.setBrazilAddress(brazilAddress);
 	}
 
 	@Override

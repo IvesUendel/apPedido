@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.apPedido.model.domain.Address;
 
-@FeignClient(url = "https://viacep.com.br/ws", name = "addressClient")
+@FeignClient(name = "addresClient", url = "https://viacep.com.br/ws")
 public interface IAddressClient {
 	
 	@GetMapping(value = "/{cep}/json/")

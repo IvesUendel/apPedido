@@ -11,7 +11,7 @@ public class AddressService {
 	
 	@Autowired
 	private IAddressClient addressClient;
-
+	
 	public Address searchCep(String cep) {
 		return addressClient.searchCep(cep);
 	}
